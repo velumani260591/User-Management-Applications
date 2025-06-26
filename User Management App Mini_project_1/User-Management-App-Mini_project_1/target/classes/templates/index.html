@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Management App</title>
+  <link rel="stylesheet" href="@{/style.css}">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-primary fixed-top">
+  <div class="container-fluid">
+  <a th:href="@{/index}" class="navbar-brand mb-0 h1 mx-auto">User Management App</a>
+  </div>
+</nav>
+
+<!-- User Details Section -->
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Users List</h2>
+      <a class="btn btn-success"  th:href="@{/Adduser}">Add User</a>
+    </div>
+
+  <div role="alert" id="autoCloseAlert">
+
+          <div th:if="${param.success}">
+            <div class="alert alert-info">Added successfully! </div>
+          </div>
+          <div th:if="${param.update}">
+            <div class="alert alert-info">You have successfully Updated the details!!!!!</div>
+          </div>
+          <div th:if="${param.delete}">
+            <div class="alert alert-info">You have successfully deleted !!!!!</div>
+          </div>
+  </div>
+
+
+
+  <!-- User Information Table -->
+  <div>
+    <table class="table table-bordered table-striped table-hover align-middle">
+      <thead class="table-primary text-center">
+      <tr>
+        <th>User First Name</th>
+        <th>User Last Name</th>
+        <th>User Email Id</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody class="text-center" >
+      <tr th:each="employee:${users}">
+        <td th:text="${employee.firstName}"></td>
+        <td th:text="${employee.lastName}"></td>
+        <td th:text="${employee.emailId}"></td>
+        <td>
+          <div>
+            <a  th:href="@{'/update/'+ ${employee.id}}" class="btn btn-sm btn-warning me-3">Update</a>
+            <a th:href="@{'/delete/'+ ${employee.id}}" class="btn btn-sm btn-danger me-3">Delete</a>
+            <a  th:href="@{'/view/'+ ${employee.id}}" class="btn btn-sm btn-info text-white">View</a>
+          </div>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Auto-close alert after 5 seconds
+  setTimeout(function() {
+      var alertNode = document.getElementById('autoCloseAlert');
+      if (alertNode) {
+          var bsAlert = bootstrap.Alert.getOrCreateInstance(alertNode);
+          bsAlert.close();
+      }
+  }, 2000);
+</script>
+
+</body>
+</html>

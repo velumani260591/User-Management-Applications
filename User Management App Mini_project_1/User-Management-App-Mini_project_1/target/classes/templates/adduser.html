@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add User</title>
+  <link rel="stylesheet" href="@{/style.css}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-primary fixed-top">
+  <div class="container-fluid">
+    <a th:href="@{/index}" class="navbar-brand mb-0 h1 mx-auto">User Management App</a>
+  </div>
+</nav>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Add User</h2>
+  <form method="post" th:action="@{/saveuser}" th:object="${userDetails}" class="p-4 shadow rounded bg-white mx-auto mt-5" style="max-width: 500px;">
+<!--    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>-->
+    <div class="mb-3" >
+      <label for="firstname" class="form-label">First Name</label>
+      <input th:field="*{firstName}" type="text" class="form-control" id="firstname" placeholder="Enter your firstname" required>
+
+<!--      <p th:errors="*{firstName}" class="text-danger"  th:if="${#fields.hasErrors('firstName')}"></p>-->
+    </div>
+    <div class="mb-3" >
+      <label for="lastname" class="form-label">Last Name</label>
+      <input th:field="*{lastName}" type="text" class="form-control" id="lastname" placeholder="Enter your lastname" required>
+<!--      <p th:errors="*{lastName}" class="text-danger"  th:if="${#fields.hasErrors('lastName')}"></p>-->
+
+    </div>
+    <div class="mb-3" >
+      <label for="email" class="form-label">Email ID</label>
+      <input  th:field="*{emailId}" type="email" class="form-control" id="email" placeholder="Enter your email id" required>
+      <p th:errors="*{emailId}" class="text-danger"  th:if="${#fields.hasErrors('emailId')}"></p>
+
+    </div>
+    <div class="mb-3" >
+      <label for="number" class="form-label">Mobile Number</label>
+      <input th:field="*{phoneNumber}" type="text" class="form-control" id="number"   maxlength="10" placeholder="Enter your mobile number"  required>
+<!--      <p th:errors="*{phoneNumber}" class="text-danger"  th:if="${#fields.hasErrors('phoneNumber')}"></p>-->
+
+    </div>
+    <button  type="submit" class="btn btn-primary w-100">Submit</button>
+    <a th:href="@{/index}" class="btn btn-secondary w-100 mt-2">Cancel</a>
+
+  </form>
+
+</div>
+</body>
+</html>

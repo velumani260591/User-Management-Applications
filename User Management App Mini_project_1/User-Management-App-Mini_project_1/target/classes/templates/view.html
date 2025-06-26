@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="@{/style1.css}">
+
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+        <a th:href="@{/index}" class="navbar-brand mb-0 h1 mx-auto">User Management App</a>
+    </div>
+</nav>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card p-4 shadow" style="width: 100%; max-width: 450px;">
+        <h3 class="card-title text-center mb-4">User Details</h3>
+        <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item">
+                <span class="employee-label">First Name:</span>
+                <span class="employee-value ms-2" th:text="${user.firstName}"></span>
+            </li>
+            <li class="list-group-item">
+                <span class="employee-label">Last Name:</span>
+                <span class="employee-value ms-2" th:text="${user.lastName}"></span>
+            </li>
+            <li class="list-group-item">
+                <span class="employee-label">Email ID:</span>
+                <span class="employee-value ms-2" th:text="${user.emailId}"></span>
+            </li>
+            <li class="list-group-item">
+                <span class="employee-label">Mobile Number:</span>
+                <span class="employee-value ms-2" th:text="${user.phoneNumber}"></span>
+            </li>
+        </ul>
+        <a th:href="@{/index}" class="btn btn-secondary w-100">Back</a>
+        <a  th:href="@{'/update/'+ ${user.id}}" class="btn  btn-warning w-100 my-2">Update</a>
+    </div>
+</div>
+</body>
+</html>

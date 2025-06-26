@@ -1,0 +1,19 @@
+        body {
+            background: #f8f9fa;
+        }
+        .card {
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: #333;
+        }
+        .user-label {
+            font-weight: 500;
+            color: #555;
+        }
+        .user-value {
+            color: #222;
+        }

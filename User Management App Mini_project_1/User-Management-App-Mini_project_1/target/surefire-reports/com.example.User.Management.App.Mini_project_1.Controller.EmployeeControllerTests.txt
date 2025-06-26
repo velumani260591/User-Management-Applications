@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.User.Management.App.Mini_project_1.Controller.EmployeeControllerTests
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.292 s -- in com.example.User.Management.App.Mini_project_1.Controller.EmployeeControllerTests
